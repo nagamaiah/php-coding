@@ -41,5 +41,6 @@ print_r(pathinfo(__FILE__)).'<br><br>';
 //     [filename] => filesystem
 // )
 
+echo "Today date is ".date('d-m-Y'); //26-01-2023
 
 ?>
