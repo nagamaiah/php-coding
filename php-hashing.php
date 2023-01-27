@@ -26,11 +26,8 @@ echo "<pre>";
 // sha512/224 --> a2100ce5f1cda8b0b6265a7b4251ab39cdbbabf97828c03a5efe3443  
 // sha512/256 --> 2e76c5271204cd918cf3c2959f7e6e451ef3b89640ac55451a27b843ebe29bb0
 
-
-
 //hash_algos — Return a list of registered hashing algorithms
 // print_r(hash_algos());
-
 
 // echo "sha512 --> ".hash('sha512','Test1234', false)."\n";    //used in docsmit app
 // echo "md5 --> ".hash('md5','Test1234', false)."\n";
@@ -41,10 +38,11 @@ echo "<pre>";
 // echo "sha256 --> ".hash('wrongalgooo','Test1234', false)."\n";  //Fatal error:  Uncaught ValueError:
 
 // Error is the base class for all internal PHP errors.
+
 try {
     echo hash('string','Test1234', false)."\n";  //Fatal error:  Uncaught ValueError:
 } catch (\Error $e) { 
-    print_r($e); // ValueError Object
+    // print_r($e); // ValueError Object
 
 }
 
@@ -66,4 +64,60 @@ try {
 }
 
 
+// password_hash(string $password, string|int|null $algo, array $options = []): string      <<<---
+// password_hash($inputPW, $algo) creates a new password hash using a strong one-way hashing algorithm.
+// password_hash() no longer returns false on failure since php8.0 version
+// returns hashed pass on success, return ValueError on failure     <<<---
+// PASSWORD_DEFAULT - Use the bcrypt algorithm
+// PASSWORD_BCRYPT - Use the CRYPT_BLOWFISH algorithm to create the hash.
+// $options = ['cost' => 12, 'memory' => 1024, 'time' => 2, 'threads' => 2];
 
+
+// password_verify(string $password, string $hash): bool    <<<---
+// password_verify($inputPW, $storedHash) - Verifies that a password matches a hash
+// Check if the hash of the entered login password, matches the stored hash.
+// Returns true if the password and hash match, or false otherwise.     <<<---
+
+$password = "Test123";
+
+// echo  "PASSWORD_DEFAULT -> ".password_hash($password,PASSWORD_DEFAULT)."<br>";
+// $2y$10$u0AwDF/.2P47pK6QOCgxT.KJRrZf97C87irEJgy33vja1eg8UHDjW
+
+// echo  "PASSWORD_BCRYPT -> ".password_hash($password,PASSWORD_BCRYPT)."<br>";
+// $2y$10$fltDSlZ5ILnGoo4b9gRecOekfIpiWNnKjOgXwKC0yR17pJb3wHISC
+
+// echo  "PASSWORD_ARGON2I -> ".password_hash($password,PASSWORD_ARGON2I)."<br>";
+// $argon2i$v=19$m=65536,t=4,p=1$U3lRLi9YNC5nU1NnNzcuSw$lRn41kCR8SMt5ynfb5OAcduk+2PSNKSG5H3yyrCIRTw
+
+// echo  "PASSWORD_ARGON2ID -> ".password_hash($password,PASSWORD_ARGON2ID)."<br>";
+// $argon2id$v=19$m=65536,t=4,p=1$RXEvb2V4SEJPMy83NEZ3Mg$gsmWKhGr99wKa1WLc77ebF+/nuIRromgCtMZDnzsAdU
+
+
+// hash parts
+// $exampleHashedPassword = $2y$  10   $  fltDSlZ5ILnGoo4b9gRecOekfIpiWNnKjOgXwKC0yR17pJb3wHISC
+//                          Algo  Cost     Salt & hash parts
+
+$hashedPW = password_hash($password, PASSWORD_DEFAULT);
+
+echo $hashedPW."<br>";
+
+var_dump(password_verify($password, $hashedPW));
+
+
+
+// Laravel Default Hash Drivers  - bcrypt uses CRYPT_BLOWFISH algorithm to create the hash
+// Supported: "bcrypt", "argon", "argon2id"
+// The Laravel Hash facade provides secure Bcrypt and Argon2 hashing for storing user passwords. 
+// Bcrypt will be used for registration and authentication by default.
+// You may hash a password by calling the make method on the Hash facade:
+// Hash::make($inputPW) or
+// $hashed = Hash::make($inputPW, [
+    // 'memory' => 1024,
+    // 'time' => 2,
+    // 'threads' => 2,
+    // ]);  with options
+
+// verifying a password matches a hash
+// if (Hash::check($inputPassword, $hashedPassword)) {
+    // The passwords match...
+// }
