@@ -55,7 +55,7 @@ class ClassName extends ParentClass implements Men, Women
         $arg2 = null,
         array $data = []
     ) {
-    	if (condition goes here..) {
+    	if ($condition_goes_here) {
     		foreach ($lists as $keys => $values) {
     			//perform operation
     		}

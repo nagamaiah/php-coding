@@ -171,7 +171,7 @@
 //null is always converted to an empty string.
 // var_dump(strval(null)); // return empty string
 
-// $data = ['A','B','R','G','J','K'];
+$data = ['A','B','R','G','J','K'];
 // var_dump(serialize($data));
 // var_dump(unserialize(serialize($data)));
 
