@@ -12,8 +12,11 @@ error_reporting(E_ALL);
 // include "4.superglobals.php";
 // include "6.date-time.php";
 // include "7.filesystem.php";
-include "8.functions.php";
-
+// include "8.functions.php";
+// include "9.type-hinting.php";
+// include "5.strings.php";
+// include "PHP8-NEW-FEATURES.php";
+// include "15.php-docblock.php";
 
 
 

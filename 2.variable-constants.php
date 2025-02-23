@@ -29,6 +29,22 @@ $_34frfsNamd = "rajuu";
 // myTest(); 2
 
 
+function testStatic()
+{
+    static $a=1;
+    echo $a;
+    echo "<br/>";
+    $a += $a;
+    echo $a;
+}
+
+// testStatic();
+// testStatic();
+// testStatic();
+
+echo "<br/>";
+
+
 // constants are defined using php define() built-in function 
 
 define('CUSTOMER_ORDER_STATUS','PAID');

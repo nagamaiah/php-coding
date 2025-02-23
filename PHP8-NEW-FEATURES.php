@@ -22,6 +22,14 @@ echo "<h4 style='text-align:center'>What's new in PHP 8.x</h4>";
 // 3. Allow null, false, and true as stand-alone types
 // 4. Constants in traits
 
+// PHP 8.3
+// 1. Typed class constants 
+// 2. Dynamic class constant fetch
+// 3. New #[\Override] attribute
+// 4. Deep-cloning of readonly properties
+// 5. New json_validate() function
+// 6. New Randomizer::getBytesFromString() method
+
 
 
 
@@ -32,12 +40,54 @@ echo "<h4 style='text-align:center'>What's new in PHP 8.x</h4>";
 
 
 
+// Match expression
+
+// $status = 5;
+
+// $result = match($status){
+//     1 => "Male",
+//     2 => "Female",
+//     3 => "Bisexual",
+//     default => "Others"
+// };
+
+// var_dump($result);
+
+
+try {
+    $statusCode = 404;
+
+    $response = match($statusCode){
+        200 => "Ok",
+        401 => "Unauthenticated",
+        403 => "Forbidden",
+        404 => "Not Found",
+        default => throw new \InvalidArgumentException('Invalid Argument provided')
+    };
+
+    // var_dump($response);
+} catch (\Throwable $th) {
+    echo $th->getMessage();
+    // echo $th::class;
+}
+
+
+$condition = 5;
+
+try {
+    match ($condition) {
+        1, 2 => foo(),
+        3, 4 => bar(),
+    };
+} catch (\UnhandledMatchError $e) {
+    echo "<pre>";
+    // print_r($e->getMessage());
+}
+
 
 // 7. Attributes
 // Attributes, commonly known as annotations in other languages, offers a way to add meta data to classes, 
 // without having to parse docblocks.
-
-
 
 
 

@@ -77,17 +77,27 @@ echo "<pre>";
 
 // 7. $_SESSION - Used to set and get session in php
 // use session_start() function at the top of script to init session
-// use $_SESSION['username] = 'rajuu'  to get/set session 
+// use $_SESSION['username'] = 'rajuu'  to get/set session 
 // we can access session across multiple pages once you set session
 // session is stored on server. We can also store in database if required.
 // session_unset() and session_destroy() are used to unset and destroy session data
+// $_SESSION['username'] = 'rajuu';
+// session_unset();  // Just clear all data of all session variable.
+// session_destroy(); // Remove all session.
 
+// $_SESSION['name'] = 'arjun';
+// $_SESSION['age'] = 30;
 
-print_r($_SESSION);
+// session_unset();
+// session_destroy();
+
+// var_dump($_SESSION);
 
 
 // 8. $_REQUEST - HTTP Request variables
 // An associative array that by default contains the contents of $_GET, $_POST and $_COOKIE.
+echo "<pre>";
+// print_r($_REQUEST);
 
 
 

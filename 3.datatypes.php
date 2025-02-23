@@ -74,6 +74,12 @@
 // var_dump(is_null(''));  //false
 // var_dump(is_null(nuLL));  //true
 
+// var_dump($something);  // will give a warning and print NULL
+
+// $res = 10;
+// echo $res;
+// unset($res);
+// var_dump($res);
 
 // A bool or boolean expresses a truth value. It can be either true or false. 
 // Boolean data types are used in conditional testing. 

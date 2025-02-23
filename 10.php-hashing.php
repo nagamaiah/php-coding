@@ -69,7 +69,7 @@ try {
 // password_hash() no longer returns false on failure since php8.0 version
 // returns hashed pass on success, return ValueError on failure     <<<---
 // PASSWORD_DEFAULT - Use the bcrypt algorithm
-// PASSWORD_BCRYPT - Use the CRYPT_BLOWFISH algorithm to create the hash.
+// PASSWORD_BCRYPT - Use the CRYPT_BLOWFISH algorithm to create the hash. Laravel uses this for hashing
 // $options = ['cost' => 12, 'memory' => 1024, 'time' => 2, 'threads' => 2];
 
 
@@ -120,4 +120,15 @@ var_dump(password_verify($password, $hashedPW));
 // verifying a password matches a hash
 // if (Hash::check($inputPassword, $hashedPassword)) {
     // The passwords match...
+// }
+
+// public function make($value, array $options = [])
+// {
+//     $hash = password_hash($value, PASSWORD_BCRYPT, [
+//         'cost' => $this->cost($options),
+//     ]);
+//     if ($hash === false) {
+//         throw new RuntimeException('Bcrypt hashing not supported.');
+//     }
+//     return $hash;
 // }

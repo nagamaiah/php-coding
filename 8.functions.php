@@ -51,14 +51,18 @@ $getFullname = fn() => $fistname." ".$lastname;
 // echo $getFullname();
 // echo "<br>";
 
+// The information or variable, within the function’s parenthesis, are called parameters.
+// These parameters are used to accept inputs during runtime. 
+// While passing the values like during a function call, they are called arguments.
+// An argument is a value passed to a function and a parameter is used to hold those arguments.
 
-// Different ways of passing data to functions (arguments or parameters)
+// Different ways of passing data to functions (arguments to parameters)
 // 1. Pass by value
 // 2. Pass by reference 
 // 3. Default Values
 // 4. Named Parameters
 
-
+// Variable-length argument lists and Named Arguments are also supported.
 
 // 1. Pass by value  && Default Values
 

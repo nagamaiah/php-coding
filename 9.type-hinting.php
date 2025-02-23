@@ -40,12 +40,18 @@ function classData(Car $car)
 	// echo $car->carInfo();
 }
 
+	
 
 
+// Type Hinting is method by which we can force function to accept the desired data type.
+// Type hinting is a concept that provides hints to function for the expected data type of arguments.
+// Type hinting can also be used to force a function to get an argument of type Object. For this purpose,  
+// We put the name of the class in front of the argument name in the function.
+// PHP5 doesn’t allow type hinting for basic data types (int, float, string and bool), only allows for arrays, classes, interfaces and callables 
+// PHP7 does support scalar type hinting.
 
-// -- Type Hinting is method by which we can force function to accept the desired data type.
-// -- Type hinting is a concept that provides hints to function for the expected data type of arguments.
-// --   Type hinting can also be used to force a function to get an argument of type Object. For this purpose,  
-//         we put the name of the class in front of the argument name in the function.
-// --   PHP5 doesn’t allow type hinting for basic data types (int, float, string and bool), 
-//         PHP7 does support scalar type hinting.
+
+// Type declarations can be added to function arguments, return values, and, as of PHP 7.4. 0, class properties. 
+// They ensure that the value is of the specified type at call time, otherwise a TypeError is thrown
+
+
